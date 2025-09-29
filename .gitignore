@@ -1,0 +1,116 @@
+# -----------------------------
+# Node / Frontend (Angular, React, Vue)
+# -----------------------------
+node_modules/
+dist/
+build/
+.tmp/
+temp/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+yarn.lock
+
+# Angular specific
+.angular/
+
+# Vue specific
+.vuepress/dist
+/.nuxt
+/.output
+/.cache
+
+# React specific
+.cache/
+.next/
+out/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# -----------------------------
+# Java
+# -----------------------------
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.tar.gz
+hs_err_pid*
+replay_pid*
+
+# Build directories
+/target/
+/out/
+/build/
+
+# Gradle
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Maven
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# -----------------------------
+# C# / Visual Studio
+# -----------------------------
+bin/
+obj/
+[Bb]uild/
+[Ll]ogs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Rider / ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# -----------------------------
+# HTML / CSS
+# -----------------------------
+# (No build outputs by default, but ignore common temp/IDE caches)
+*.tmp
+*.swp
+*.sass-cache/
+*.css.map
+
+# -----------------------------
+# IDEs
+# -----------------------------
+
+# IntelliJ / JetBrains
+.idea/
+*.iml
+out/
+*.ipr
+*.iws
+
+# Visual Studio Code
+.vscode/
+.history/
+*.code-workspace
+
+# Eclipse (if used with Java)
+.project
+.classpath
+.settings/
