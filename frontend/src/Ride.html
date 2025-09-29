@@ -18,6 +18,7 @@
   
   <!-- CSS Datei einbinden -->
   <link rel="stylesheet" href="./css/Fahrgemeinschaft.css" />
+  <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -25,6 +26,15 @@
 <h1>FahrGemeinschaftApp</h1>
 
 <h2 >Rides</h2>
+<h3> add Ride</h3>
+<p>
+    Please provide the following information<br>  
+    Start: <input type="text" id="rideStart"> <br>
+    Destination: <input type="text" id="rideDestination"> <br>
+    Date: <input type="date" id="rideDate"> <br>
+    Time: <input type="time" id="rideTime"><br>
+    Available Seats: <input type="number" id="rideSeats"><br>  
+</p>
 
 <span id="ridesTable">
     <table>
@@ -57,6 +67,7 @@
 </span>
 <br>
 <br>
+<button id="addRideButton">Add Ride</button>
 
 <span id="rideMap">
     <h3>Map Placeholder</h3>
@@ -64,7 +75,42 @@
 </span>  
     
     <br/>
+<script>
+    $("#addRideButton").click(function(){
+        var  addRide = {
+            roken : localStorage.getItem("fgatoken"),
+            Ride: { 
+                start: $("#rideStart").val(),
+                destination: $("#rideDestination").val(),
+                date: $("#rideDate").val(),
+                time: $("#rideTime").val(),
+                availableSeats: $("#rideSeats").val(),
+            }
+    };
 
+    console.log("sending post on ride to bff with ride")
+    console.log(addRide)
+    
+    $.ajax({
+    url : 'http://mysuperserver.com', //geht noch nicht 
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    success: function(data){
+        console.log("Ride has been added: " + data);
+        alert("ride has been added: " + data);
+
+    },
+    data : JSON.stringify(registerUser),
+    processData: false,
+    error: function(xhr, ajaxOptions, thrownError){
+        console.log("Ride was not added:" + xhr.status + " " + thrownError);
+        alert("ride was not added: " + xhr.status + " " + thrownError);
+    }});
+
+    });
+
+</script>
 
 
 
