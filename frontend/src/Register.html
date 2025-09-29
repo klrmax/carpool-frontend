@@ -18,6 +18,7 @@
   
   <!-- CSS Datei einbinden -->
   <link rel="stylesheet" href="./css/Fahrgemeinschaft.css" />
+   <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -27,14 +28,44 @@
 
     <p>
         Please provide the following information<br>    
-        Your name: <input type:"text"> <br>
-        Email: <input type:"Email"> <br>
-        Password: <input type:"Password"><br>
+        Your name: <input type:"text" id="userName"> <br>
+        Email: <input type:"Email" id="userEmail"> <br>
+        Password: <input type:"Password" id="userPassword"><br>
 
-        <button>Register me!</button>
+        <button id="registerButton">Register me!</button>
 
     </p>
+<script>
+    $("#registerButton").click(function(){
+        var registerUser = {
+        name: $("#userName").val(),
+        email: $("#userEmail").val(),
+        password: $("#userPassword").val(),
+    };
 
+    console.log("sending post on register to bff")
+    console.log(registerUser)
+    
+    $.ajax({
+    url : 'http://mysuperserver.com', //geht noch nicht 
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    success: function(data){
+        console.log("Register successful: " + data);
+        alert("Register successful: " + data);
+
+    },
+    data : JSON.stringify(registerUser),
+    processData: false,
+    error: function(xhr, ajaxOptions, thrownError){
+        console.log("error on register:" + xhr.status + " " + thrownError);
+        alert("register failed: " + xhr.status + " " + thrownError);
+    }});
+
+    });
+
+</script>
     <br/>
     <div class="ridemenu">
 <a href="Homepage.html">Homepage</a> &nbsp;

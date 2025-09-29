@@ -18,7 +18,7 @@
   
   <!-- CSS Datei einbinden -->
   <link rel="stylesheet" href="./css/Fahrgemeinschaft.css" />
-     <script>type="text/javascript" src="../js//jquery-3.6.0.min.js"</script>
+     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -30,21 +30,22 @@
 
     <p>
         Please provide the following information<br>    
-        Email: <input type:"email"> <br>
-        Password: <input type:"Password"><br>
+        Email: <input type:"email" id="userEmail"> <br>
+        Password: <input type:"password" id="userPassword"><br>
 
-        <button id="loginButton"">Log me on !</button>
+        <button id="loginButton">Log me on !</button>
 
     </p>
 
 <script>
     $("#loginButton").click(function(){
         var loginUser = {
-        email = $("#email").val(),
-        password = $("#password").val(),
+        email: $("#userEmail").val(),
+        password: $("#userPassword").val(),
     };
 
     console.log("sending post on Login to bff with user:" + loginUser)
+
     $.ajax({
     url : 'http://mysuperserver.com', //geht noch nicht 
     type: 'POST',
@@ -53,13 +54,15 @@
     success: function(data){
         console.log("login successful: " + data);
         alert("Login successful: " + data);
+        localStorage.setItem("fgatoken", data.token);
     },
     data : JSON.stringify(loginUser),
     processData: false,
     error: function(xhr, ajaxOptions, thrownError){
         console.log("error on login:" + xhr.status + " " + thrownError);
-        alert("Login failed: " + xhr.status + " " + thrownError);,
-    });
+        alert("Login failed: " + xhr.status + " " + thrownError);
+        localStorage.setItem("fgatoken", '123');
+    }});
 
     });
 
