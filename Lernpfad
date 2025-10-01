@@ -8,6 +8,13 @@ Erstellung von postgress in unserem bff heroku
 
 Erstellung von graphql repo und heroku (kopiert wie immer aus mHartwick githubacc)
 
-Erkenntis das wir nicht die DB api benutzen sondern die transport.rest api
+Erkenntis das wir die DB API:
+Fahrplan API: Zugverbindungen, Abfahrts- und Ankunftszeiten.
+Shared Mobility APIs: Daten zu Carsharing, Leihfahrrädern und E-Scootern.
+nutzen wollen 
+
+
+
+
 
 
