@@ -1,1 +1,13 @@
+Mitarbeiten in den Vorlesung und paralele entwicklung in unserem Projekt 
+bis jetzt haben wir alles was Frontend angeht direkt umgesetzt
+backend haben wir noch nicht an unsere app angepasst\
+
+
+01.10
+Erstellung von postgress in unserem bff heroku
+
+Erstellung von graphql repo und heroku (kopiert wie immer aus mHartwick githubacc)
+
+Erkenntis das wir nicht die DB api benutzen sondern die transport.rest api
+
 
