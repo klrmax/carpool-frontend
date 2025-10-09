@@ -1,9 +1,0 @@
-Projektanforderungen
-
-Ein Nutzer (Name, Alter, Email, Telefonnummer, Adresse) kann sich am Service Registrieren, Anmelden und Ausloggen.
-Er kann Fahrten (Start, Ziel, Uhrzeit, Freie Platzanzahl) eingeben. 
-Er kann auch Fahren von anderen Nutzern nach Strecke und Anzahl der freien Plätze suchen und abfragen.
-Er kann anfragen bei einer Fahrt als Beifahrer mitzufahren. 
-Der Service wird durch ein zentrales Kartenprogramm unterstützt, sodass man Strecken direkt im System sehen kann. 
-Bei Anfrage eines Nutzers als Mitfahrer bekommt der Fahrer eine Benachrichtigung.
-Falls bis zum Zeitpunkt der Suche keine passende Fahrt angelegt wurde, gibt das System Strecken der Deutschen Bahn an, die zur Anfrage passen.
