@@ -1,0 +1,97 @@
+Anforderungskatalog:
+
+FGA-FKT-1
+Der Service besitzt eine Registrierungsseite
+
+FGA-FKT-2
+Ein Benutzer registriert sich auf der Registrierungs-Seite mit Email und Passwort.
+
+FGA-FKT-3
+Das System schickt dem Nutzer eine Email zur Verifizierung der Email Adresse
+
+FGA-FKT-4
+Der Service besitzt eine Login-Seite.
+
+FGA-FKT-5
+Ein Benutzer loggt sich auf der Login-Seite mit Email und Passwort ein.
+
+FGA-FKT-6
+Der Service validiert die Eingabedaten eines Nutzers auf der Login-Seite.
+
+FGA-FKT-7
+Der Service gibt dem Benutzer einen individuellen Token, der temporär gültig ist.
+
+FGA-FKT-8
+Der Service hat eine Homepage
+
+FGA-FKT-9
+Der Service erlaubt nutzern über die Homepage auf Unterseiten zu navigieren
+
+FGA-FKT-10
+Der Service hat eine Fahrten-Eingabeseite
+
+FGA-FKT-11
+Benutzer geben auf der Fahren-Eingabeseite Fahrten (Fahrt_ID, Start- & Zielort, Startzeit, Datum, Sitzplätze) ein.
+
+FGA-FKT-12
+Der Service stellt den Ersteller einer neuen Fahrt als Fahrer (Fahrer_ID, Name, Email, Telefonnummer) dieser Fahrt ein.
+
+FGA-FKT-13
+Das System speichert vom Nutzer angelegte Fahrten in der Datenbank ab.
+
+FGA-FKT-14
+Der Service zeigt eine Pop-Up Nachricht an, die dem Nutzer sagt, dass die Fahrt erfolgreich erstellt wurde.
+
+FGA-FKT-15
+Der Service hat eine Fahrten-Seite
+
+FGA-FKT-16
+Benutzer suchen auf der Fahrten-Seite nach einer Strecke (Start- & Zielort, Uhrzeit)
+
+FGA-FKT-17
+Service sucht nach Vorhandenen angelegten Fahrten
+
+FGA-FKT-18
+Service schickt parallel zur suche passender angelegter Fahrten eine Anfrage an die API der Deutschen Bahn um passende Fahrten zu finden.
+
+FGA-FKT-19
+Benutzer sehen bestehende Fahrten aus der Datenbank, die zu ihrer Suche passen
+
+FGA-FKT-20
+Benutzer sehen mögliche Fahrten der Deutschen Bahn, die zu ihrer Suche passen
+
+FGA-FKT-21
+Benutzer können Fahrten auswählen um mehr Informationen zu bekommen.
+
+FGA-FKT-22
+Die Fahrten werden in einem eigenen Popup Fenster angezeigt (Strecke, Fahrt, Kartenansicht).
+
+FGA-FKT-23
+Das System zieht sich aus einem Kartenprogramm die Kartenansicht der Strecke und zeigt sie in dem Popup Fenster an.
+
+FGA-FKT-24
+Benutzer können bei vorhandenen Fahrten anfragen ob sie mitfahren dürfen.
+
+FGA-FKT-25
+Das System speichert die Mitfahrer Anfrage
+
+FGA-FKT-26
+Das System schickt eine Mitfahranfrage (Anfrage_ID, Fahrt_ID, Mitfahrer_ID) Benachrichtigung an den Fahrer
+
+FGA-FKT-27
+Der Fahrer hat die Möglichkeit die Mitfahranfrage über einen Button anzunehmen oder abzulehnen.
+
+FGA-FKT-28
+Eingeloggte Benutzer sehen auf der Homepage eine Übersicht über relevante Informationen.
+
+FGA-FKT-29
+Das System besitzt eine Logout Seite
+
+FGA-FKT-30
+Der Benutzer kann sich durch klick auf einen Logout button abmelden vom Service.
+
+FGA-FKT-31
+Das System löscht den temporären Token nach erfolgreicher Abmeldung des Nutzers
+
+FGA-FKT-32
+Nicht eingeloggte Benutzer sehen auf der Homepage Hinweise zur Registrierung oder allgemeine Informationen.
