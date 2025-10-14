@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Zeichencodierung -->
+  <meta charset="UTF-8" />
+
+  <!-- Responsive Design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Dokumentbeschreibung (SEO) -->
+  <meta name="description" content="Login FGA Web-Programming app" />
+
+  <!-- Titel der Seite (im Tab, SEO) -->
+  <title>Rides | carpool</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+  
+  <!-- CSS Datei einbinden -->
+  <link rel="stylesheet" href="./css/Fahrgemeinschaft.css" />
+  <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+<h1>Carpool rides</h1>
+
+<h2 >Rides</h2>
+<h3> add Ride</h3>
+<p>
+    Please provide the following information<br>  
+    Start: <input type="text" id="rideStart"> <br>
+    Destination: <input type="text" id="rideDestination"> <br>
+    Date: <input type="date" id="rideDate"> <br>
+    Time: <input type="time" id="rideTime"><br>
+    Available Seats: <input type="number" id="rideSeats"><br>  
+</p>
+
+<span id="ridesTable">
+    <table>
+        <thead>
+            <tr>
+                <th>Start</th>
+                <th>Destination</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Available Seats</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Mosbach</td>
+                <td>Heilbronn</td>
+                <td>2024-10-28</td>
+                <td>08:00</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Stuttgart</td>
+                <td>Karlsruhe</td>
+                <td>2024-10-29</td>
+                <td>09:30</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+</span>
+<br>
+<br>
+<button id="addRideButton">Add Ride</button>
+
+<span id="rideMap">
+    <h3>Map Placeholder</h3>
+    <p>This section can be used to display a map of the rides.</p>
+</span>  
+    
+    <br/>
+<script>
+    $("#addRideButton").click(function(){
+        var  addRide = {
+            roken : localStorage.getItem("fgatoken"),
+            Ride: { 
+                start: $("#rideStart").val(),
+                destination: $("#rideDestination").val(),
+                date: $("#rideDate").val(),
+                time: $("#rideTime").val(),
+                availableSeats: $("#rideSeats").val(),
+            }
+    };
+
+    console.log("sending post on ride to bff with ride")
+    console.log(addRide)
+    
+    $.ajax({
+    url : 'https://carpoolbff-c576f25b03e8.herokuapp.com/ride',
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    success: function(data){
+        console.log("Ride has been added: " + data);
+        alert("ride has been added: " + data);
+
+    },
+    data : JSON.stringify(registerUser),
+    processData: false,
+    error: function(xhr, ajaxOptions, thrownError){
+        console.log("Ride was not added:" + xhr.status + " " + thrownError);
+        alert("ride was not added: " + xhr.status + " " + thrownError);
+    }});
+
+    });
+
+</script>
+
+
+
+    <div class="ridemenu">
+<a href="Homepage.html">Homepage</a> &nbsp;
+    </div>
+</body>
+</html>

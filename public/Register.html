@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Zeichencodierung -->
+  <meta charset="UTF-8" />
+
+  <!-- Responsive Design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Dokumentbeschreibung (SEO) -->
+  <meta name="description" content="Register FGA Web-Programming app" />
+
+  <!-- Titel der Seite (im Tab, SEO) -->
+  <title>Register | Carpool</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+  
+  <!-- CSS Datei einbinden -->
+  <link rel="stylesheet" href="./css/Fahrgemeinschaft.css" />
+   <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+<h1>carpool register</h1>
+.<br><br>
+
+    <p>
+        Please provide the following information<br>    
+        Your name: <input type="text" id="userName"> <br>
+        Email: <input type="email" id="userEmail"> <br>
+        Password: <input type="password" id="userPassword"><br>
+
+        <button id="registerButton">Register me!</button>
+
+    </p>
+<script>
+    $("#registerButton").click(function(){
+        var registerUser = {
+        name: $("#userName").val(),
+        email: $("#userEmail").val(),
+        password: $("#userPassword").val(),
+    };
+
+    console.log("sending post on register to bff")
+    console.log(registerUser)
+    
+    $.ajax({
+    url : 'https://carpoolbff-c576f25b03e8.herokuapp.com/register', 
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    success: function(data){
+        console.log("Register successful: " + data);
+        alert("Register successful: " + data);
+
+    },
+    data : JSON.stringify(registerUser),
+    processData: false,
+    error: function(xhr, ajaxOptions, thrownError){
+        console.log("error on register:" + xhr.status + " " + thrownError);
+        alert("register failed: " + xhr.status + " " + thrownError);
+    }});
+
+    });
+
+</script>
+    <br/>
+    <div class="ridemenu">
+<a href="Homepage.html">Homepage</a> &nbsp;
+    </div>
+</body>
+</html>
