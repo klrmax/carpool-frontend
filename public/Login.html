@@ -30,7 +30,7 @@
 
     <p>
         Please provide the following information<br>    
-        Email: <input type="email" id="userEmail"> <br>
+        Number: <input type="number" id="userNumber"> <br>
         Password: <input type="password" id="userPassword"><br>
 
         <button id="loginButton">Log me on !</button>
@@ -40,7 +40,7 @@
 <script>
     $("#loginButton").click(function(){
         var loginUser = {
-        email: $("#userEmail").val(),
+        Number: $("#userNumber").val(),
         password: $("#userPassword").val(),
     };
 
