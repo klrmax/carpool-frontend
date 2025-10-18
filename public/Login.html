@@ -44,7 +44,8 @@
         password: $("#userPassword").val(),
     };
 
-    console.log("sending post on Login to bff with user:" + loginUser)
+    console.log("sending post on Login to bff with user:")
+    console.log(loginUser)
 
     $.ajax({
     url : 'https://carpoolbff-c576f25b03e8.herokuapp.com/login',
