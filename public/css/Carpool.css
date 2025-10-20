@@ -15,6 +15,7 @@
     padding: 8px 15px;
     background-color: #f44336;
     color: white;
+    outline-color: red;
     border-radius: 4px;
    font-weight: bold; /* Match other buttons */
     width: auto; /* Match auth-link width */

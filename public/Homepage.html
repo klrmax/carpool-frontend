@@ -18,11 +18,12 @@
 
   <!-- CSS Datei einbinden -->
   <link rel="stylesheet" href="./css/Carpool.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
    <div class="logout-container">
-        <a id="logoutButton" href="Logout.html" class="logout-link">Logout</a>
+        <button id="logoutButton">Logout</button>
     </div>
         <div class="sidebar">
         <div class="sidebar-content">
@@ -71,6 +72,7 @@
         console.log("logoff successful: " + data);
         alert("Logoff successful: " + data);
         localStorage.setItem("fgatoken", data.token);
+        window.location.href = "Logout.html";
     },
     data : JSON.stringify(logoutUser),
     processData: false,
@@ -78,6 +80,7 @@
         console.log("error on logoff:" + xhr.status + " " + thrownError);
         alert("could not log you off: " + xhr.status + " " + thrownError);
         localStorage.setItem("fgatoken", 'OFF');
+        window.location.href = "Logout.html";
     }});
 
     });
