@@ -17,25 +17,72 @@
   <link rel="icon" href="/favicon.ico" />
 
   <!-- CSS Datei einbinden -->
-  <link rel="stylesheet" href="./css/Fahrgemeinschaft.css" />
+  <link rel="stylesheet" href="./css/Carpool.css" />
 </head>
 
 <body>
+   <div class="logout-container">
+        <a id="logoutButton" href="Logout.html" class="logout-link">Logout</a>
+    </div>
+        <div class="sidebar">
+        <div class="sidebar-content">
+            <div class="nav-section">
+                <a href="Ride.html" class="nav-link ride">Ride</a>
+            </div>
+            <div class="auth-section">
+                <a href="Login.html" class="auth-link login">Login</a>
+                <a href="Register.html" class="auth-link signup">Sign Up</a>
+            </div>
+        </div>
+    </div>
 
-<h1>Carpool Homepage</h1>
+  <div class="main-content">
+        <h1>Carpool Homepage</h1>
+        <p>Welcome to the FGA.</p>
+    </div>
 
-<p>
-Welcome to the FGA.<br><br>
 
-Please choose from the meanu <br/>
-  <div class="taskmenu">
-<a href="Login.html">Login</a> &nbsp;
-<a href="Logout.html">Logout</a> &nbsp;
-<a href="Register.html">Register</a> &nbsp;
-<a href="Ride.html">Ride</a> &nbsp;
+ <div class="taskmenu">
+        <a href="Ride.html">Ride</a>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; 2025 Carpool. All rights reserved.</p>
+    </footer>
+
 <!--<a href="tasks/GetTask.html">Show all tasks</a> &nbsp;
 -->
-  </div>
+
+<script>
+    $("#logoutButton").click(function(){
+        var logoutUser = {
+        token: localStorage.getItem("fgatoken"),
+        
+    };
+
+    console.log("sending post on Login to bff with user:" + logoutUser)
+    $.ajax({
+    url : 'https://carpoolbff-c576f25b03e8.herokuapp.com/logout',
+    type: 'DELETE',
+    dataType: 'json',
+    contentType: 'application/json',
+    success: function(data){
+        console.log("logoff successful: " + data);
+        alert("Logoff successful: " + data);
+        localStorage.setItem("fgatoken", data.token);
+    },
+    data : JSON.stringify(logoutUser),
+    processData: false,
+    error: function(xhr, ajaxOptions, thrownError){
+        console.log("error on logoff:" + xhr.status + " " + thrownError);
+        alert("could not log you off: " + xhr.status + " " + thrownError);
+        localStorage.setItem("fgatoken", 'OFF');
+    }});
+
+    });
+
+</script>
 
 </body>
 </html>

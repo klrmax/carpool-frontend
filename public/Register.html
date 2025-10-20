@@ -17,24 +17,50 @@
   <link rel="icon" href="/favicon.ico" />
   
   <!-- CSS Datei einbinden -->
-  <link rel="stylesheet" href="./css/Fahrgemeinschaft.css" />
+  <link rel="stylesheet" href="./css/Login-Register.css" />
    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        
+        <form class="form">
+            <div class="form-group">
+                <label>Surname</label>
+                <input type="text" id="userName" placeholder="Mustermann">
+            </div>
 
-<h1>carpool register</h1>
-.<br><br>
+            <div class="form-group">
+                <label>Mobile</label>
+                <input type="number" id="userNumber" placeholder="+49">
+            </div>
+            
+                <div class="form-group">
+            <label>Password</label>
+            <div class="password-input">
+                <input type="password" id="userPassword" placeholder="Password">
+                <button type="button" class="password-toggle">👁️</button>
+            </div>
+        </div>  
 
-    <p>
-        Please provide the following information<br>    
-        Your name: <input type="text" id="userName"> <br>
-        Number: <input type="number" id="userNumber"> <br>
-        Password: <input type="password" id="userPassword"><br>
+            <button id="registerButton" class="submit-button">Sign me up!</button>
+        </form>
 
-        <button id="registerButton">Register me!</button>
-
-    </p>
+        <p class="bottom-text">Already have an account? <a href="Login.html">Login</a></p>
+    </div>
+    <script>
+ 
+    document.querySelector('.password-toggle').addEventListener('click', function() {
+        const passwordInput = document.querySelector('#userPassword');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
+    });
+</script>
+    <footer class="footer">
+        <p>Carpool @ 2025. All rights reserved.</p>
+    </footer>
 <script>
     $("#registerButton").click(function(){
         var registerUser = {
@@ -67,8 +93,6 @@
 
 </script>
     <br/>
-    <div class="ridemenu">
-<a href="Homepage.html">Homepage</a> &nbsp;
-    </div>
+
 </body>
 </html>
