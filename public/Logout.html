@@ -30,14 +30,23 @@
 </p>
 
 <script>
-    $("#logoutButton").click(function(){
-        const token = localStorage.getItem("fgatoken");
+    /* $("#logoutButton").click(function(){
+      const token = localStorage.getItem("fgatoken");
 
         if (!token || token === 'OFF') {
             alert("You are not logged in.");
             return;
         }
       console.log("Sending logout request to BFF with token:", token);
+      */
+
+     $("#logoutButton").click(function(){
+        var logoutUser = {
+        token: localStorage.getItem("fgatoken"),
+    
+    };
+
+    console.log("sending post on Logout to bff with user:" + logoutUser)
 
     $.ajax({
         url: 'http://localhost:8090/api/users/logout',
@@ -47,8 +56,9 @@
         data: JSON.stringify({ token: token }),
         success: function(data){
             console.log("Logout successful:", data);
-            alert("Logout successful!");
+            alert("Logout successful!" + data);
             //localStorage.removeItem("fgatoken");
+            localStorage.setItem("fgatoken", data.token);
             window.location.href = "Login.html";
         },
         error: function(xhr){
