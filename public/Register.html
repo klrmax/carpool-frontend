@@ -44,45 +44,45 @@
             </div>
         </div>  
 
-            <button id="registerButton" class="submit-button">Sign me up!</button>
+            <button type="submit" id="registerButton" class="submit-button">Sign me up!</button>
         </form>
 
         <p class="bottom-text">Already have an account? <a href="Login.html">Login</a></p>
     </div>
     <script>
- 
+
+    // Passwort Sichtbarkeit umschalten
     document.querySelector('.password-toggle').addEventListener('click', function() {
         const passwordInput = document.querySelector('#userPassword');
         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
         this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
     });
-</script>
-    <footer class="footer">
-        <p>Carpool @ 2025. All rights reserved.</p>
-    </footer>
-<script>
-    $("#registerButton").click(function(){
-        var registerUser = {
-        name: $("#userName").val(),
-        Number: $("#userNumber").val(),
-        password: $("#userPassword").val(),
-    };
+    
+    // Registrierung-Formular absenden
+    $(".form").submit(function(event){
 
-    console.log("sending post on register to bff")
-    console.log(registerUser)
+    event.preventDefault();
+
+    console.log("Sending POST /api/users/register")
+    
     
     $.ajax({
-    url : 'https://carpoolbff-c576f25b03e8.herokuapp.com/register',
+    url : 'http://localhost:8090/api/users/register',
     type: 'POST',
     dataType: 'json',
     contentType: 'application/json',
+    data : JSON.stringify({
+        name: $("#userName").val(),
+        mobileNumber: $("#userNumber").val(),
+        password: $("#userPassword").val()
+    }),
     success: function(data){
         console.log("Register successful: " + data);
         alert("Register successful: " + data);
+        window.location.href = "Login.html";
 
     },
-    data : JSON.stringify(registerUser),
     processData: false,
     error: function(xhr, ajaxOptions, thrownError){
         console.log("error on register:" + xhr.status + " " + thrownError);
@@ -92,7 +92,8 @@
     });
 
 </script>
-    <br/>
-
+<footer class="footer">
+        <p>Carpool @ 2025. All rights reserved.</p>
+    </footer>
 </body>
 </html>

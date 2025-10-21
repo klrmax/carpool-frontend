@@ -40,7 +40,7 @@
     </div>
 </div>
 
-            <button id="loginButton" class="submit-button">Login</button>
+            <button type="submit" id="loginButton" class="submit-button">Login</button>
         </form>
 
         <p class="bottom-text">Don't have an account? <a href="Register.html">Sign up</a></p>
@@ -60,25 +60,32 @@
     </footer>
 
 <script>
-    $("#loginButton").click(function(){
-        var loginUser = {
-        Number: $("#userNumber").val(),
-        password: $("#userPassword").val(),
-    };
+    $(".form").submit(function(event){
+    event.preventDefault();
 
-    console.log("sending post on Login to bff with user:" + loginUser)
+    console.log("Sending POST /api/users/login")
 
     $.ajax({
-    url : 'https://carpoolbff-c576f25b03e8.herokuapp.com/login',
+    url : 'http://localhost:8090/api/users/login',
     type: 'POST',
     dataType: 'json',
     contentType: 'application/json',
-    success: function(data){
-        console.log("login successful: " + data);
-        alert("Login successful: " + data);
-        localStorage.setItem("fgatoken", data.token);
+     data : JSON.stringify({
+        mobileNumber: $("#userNumber").val(),
+        password: $("#userPassword").val()
+    }),
+    success: function(response){
+        console.log("Login successful:", response);
+        alert("Login successful: " + response);
+        localStorage.setItem("fgatoken", response.token);
+        localStorage.setItem("userId", response.userId);
+        localStorage.setItem("userName", response.name);
+
+        console.log("Saved token:", response.token);
+        alert("Welcome back " + response.name + "!");
+        window.location.href = "Homepage.html";
+        
     },
-    data : JSON.stringify(loginUser),
     processData: false,
     error: function(xhr, ajaxOptions, thrownError){
         console.log("error on login:" + xhr.status + " " + thrownError);
