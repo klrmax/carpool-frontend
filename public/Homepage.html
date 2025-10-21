@@ -54,7 +54,7 @@
 
 <!--<a href="tasks/GetTask.html">Show all tasks</a> &nbsp;
 -->
-
+<!--
 <script>
     /* $("#logoutButton").click(function(){
       const token = localStorage.getItem("fgatoken");
@@ -64,14 +64,12 @@
             return;
         }
       console.log("Sending logout request to BFF with token:", token);
-      */
+    */
 
      $("#logoutButton").click(function(){
         var logoutUser = {
         token: localStorage.getItem("fgatoken"),
-    
     };
-
     console.log("sending post on Logout to bff with user:" + logoutUser)
 
     $.ajax({
@@ -100,6 +98,8 @@
         }
     });
 });
+-->
 </script>
+*/
 </body>
 </html>

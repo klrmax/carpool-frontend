@@ -40,7 +40,7 @@
     </div>
 </div>
 
-            <button type="submit" id="loginButton" class="submit-button">Login</button>
+            <button type="v" id="loginButton" class="submit-button">Login</button>
         </form>
 
         <p class="bottom-text">Don't have an account? <a href="Register.html">Sign up</a></p>
@@ -60,7 +60,7 @@
     </footer>
 
 <script>
-    $(".form").submit(function(event){
+$(".form").submit(function(event){
     event.preventDefault();
 
     console.log("Sending POST /api/users/login")

@@ -40,41 +40,36 @@
       console.log("Sending logout request to BFF with token:", token);
       */
 
-     $("#logoutButton").click(function(){
-        var logoutUser = {
-        token: localStorage.getItem("fgatoken"),
-    
+$("#logoutButton").click(function(){
+    var logoutUser = {
+        token: localStorage.getItem("fgatoken")
     };
 
     console.log("sending post on Logout to bff with user:" + logoutUser)
 
     $.ajax({
-        url: 'http://localhost:8090/api/users/logout',
+        url: 'https://carpoolbff-c576f25b03e8.herokuapp.com/logout',
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
-        data: JSON.stringify({ token: token }),
         success: function(data){
-            console.log("Logout successful:", data);
-            alert("Logout successful!" + data);
-            //localStorage.removeItem("fgatoken");
-            localStorage.setItem("fgatoken", data.token);
+            console.log("logout successful: " + data);
+            alert("Logout successful: " + data);
+            localStorage.removeItem("fgatoken");
             window.location.href = "Login.html";
         },
-        error: function(xhr){
-            console.log("Logout error:", xhr.status, xhr.responseText);
-            // Fallback: falls trotzdem ausgeloggt wurde
-            if (xhr.status === 200 || xhr.status === 204) {
-                alert("Logout successful (fallback)!");
-                //localStorage.removeItem("fgatoken");
-                window.location.href = "Login.html";
-            } else {
-                alert("Could not log you off: " + xhr.status);
-            }
+        data: JSON.stringify(logoutUser),
+        processData: false,
+        error: function(xhr, ajaxOptions, thrownError){
+            console.log("error on logout:" + xhr.status + " " + thrownError);
+            alert("Logout failed: " + xhr.status + " " + thrownError);
+            localStorage.removeItem("fgatoken");
+            window.location.href = "Login.html";
         }
     });
 });
 </script>
+
     <br/>
   <div class="ridemenu">
 <a href="Homepage.html">Back to Homepage</a> &nbsp;
