@@ -48,7 +48,7 @@
         success: function(data){
             console.log("Logout successful:", data);
             alert("Logout successful!");
-            localStorage.removeItem("fgatoken");
+            //localStorage.removeItem("fgatoken");
             window.location.href = "Login.html";
         },
         error: function(xhr){
@@ -56,7 +56,7 @@
             // Fallback: falls trotzdem ausgeloggt wurde
             if (xhr.status === 200 || xhr.status === 204) {
                 alert("Logout successful (fallback)!");
-                localStorage.removeItem("fgatoken");
+                //localStorage.removeItem("fgatoken");
                 window.location.href = "Login.html";
             } else {
                 alert("Could not log you off: " + xhr.status);
