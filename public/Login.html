@@ -77,7 +77,7 @@ $(".form").submit(function(event){
     success: function(response){
         console.log("Login successful:", response);
         alert("Login successful: " + response);
-        //localStorage.setItem("fgatoken", response.token);
+        localStorage.setItem("fgatoken", response.token);
         localStorage.setItem("userId", response.userId);
         localStorage.setItem("userName", response.name);
 
@@ -90,7 +90,7 @@ $(".form").submit(function(event){
     error: function(xhr, ajaxOptions, thrownError){
         console.log("error on login:" + xhr.status + " " + thrownError);
         alert("Login failed: " + xhr.status + " " + thrownError);
-        //localStorage.setItem("fgatoken", '123');
+        //localStorage.setItem("fgatoken");
     }});
 
     });
