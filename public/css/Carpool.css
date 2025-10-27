@@ -1,0 +1,135 @@
+.logout-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+   width: 200px; /* Match sidebar width */
+    text-align: center;
+    background-color: #f44336;
+    padding: 8px 15px;
+    outline-style: solid;
+    outline-color: black;
+}
+
+.logout-link {
+    text-decoration: none;
+    padding: 8px 15px;
+    background-color: #f44336;
+    color: white;
+    outline-color: red;
+    border-radius: 4px;
+   font-weight: bold; /* Match other buttons */
+    width: auto; /* Match auth-link width */
+    margin: 0 20px; /* Match sidebar padding */
+}
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    padding: 20px;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.nav-section {
+    margin-top: 60px;
+}
+
+.nav-link {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.nav-link.ride {
+    display: block;
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    width: auto;
+    background-color: lightgrey;
+    color: black;
+    border: 2px solid black;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: #e9ecef;
+}
+
+.auth-section {
+    margin-top: auto;
+    margin-bottom: 120px;
+}
+
+.auth-link {
+    display: block;
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+    width: auto;
+}
+
+.auth-link.login {
+    border: 2px solid #0d6efd;
+    color: black;
+    background-color: white;
+}
+.auth-link.login:hover{
+    background-color: #e9ecef;
+}
+
+.auth-link.signup {
+    background-color: #0d6efd;
+    color: black;
+    border: 2px solid #0d6efd;
+}
+.auth-link.signup:hover{
+    background-color: #e9ecef;
+}
+
+.main-content {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;  /* Changed from right to left */
+    width: 100%;  /* Changed to full width */
+    margin-left: 0;  /* Removed margin */
+    background-color: grey;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+    z-index: 1001;
+}
+/* Adjust auth-section to prevent overlap with footer */
+.auth-section {
+    margin-top: auto;
+    margin-bottom: 100px; /* Increased to prevent overlap with footer */
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure main content doesn't go under footer */
+.main-content {
+    margin-left: 220px;
+    padding: 20px;
+    margin-bottom: 80px;
+}

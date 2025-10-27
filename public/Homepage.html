@@ -17,25 +17,89 @@
   <link rel="icon" href="/favicon.ico" />
 
   <!-- CSS Datei einbinden -->
-  <link rel="stylesheet" href="./css/Fahrgemeinschaft.css" />
+  <link rel="stylesheet" href="./css/Carpool.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
+   <div class="logout-container">
+        <button id="logoutButton">Logout</button>
+    </div>
+        <div class="sidebar">
+        <div class="sidebar-content">
+            <div class="nav-section">
+                <a href="Ride.html" class="nav-link ride">Ride</a>
+            </div>
+            <div class="auth-section">
+                <a href="Login.html" class="auth-link login">Login</a>
+                <a href="Register.html" class="auth-link signup">Sign Up</a>
+            </div>
+        </div>
+    </div>
 
-<h1>Carpool Homepage</h1>
+  <div class="main-content">
+        <h1>Carpool Homepage</h1>
+        <p>Welcome to the FGA.</p>
+    </div>
 
-<p>
-Welcome to the FGA.<br><br>
 
-Please choose from the meanu <br/>
-  <div class="taskmenu">
-<a href="Login.html">Login</a> &nbsp;
-<a href="Logout.html">Logout</a> &nbsp;
-<a href="Register.html">Register</a> &nbsp;
-<a href="Ride.html">Ride</a> &nbsp;
+ <div class="taskmenu">
+        <a href="Ride.html">Ride</a>
+    </div>
+
+
+    <footer class="footer">
+        <p>&copy; 2025 Carpool. All rights reserved.</p>
+    </footer>
+
 <!--<a href="tasks/GetTask.html">Show all tasks</a> &nbsp;
 -->
-  </div>
+<!--
+<script>
+    /* $("#logoutButton").click(function(){
+      const token = localStorage.getItem("fgatoken");
 
+        if (!token || token === 'OFF') {
+            alert("You are not logged in.");
+            return;
+        }
+      console.log("Sending logout request to BFF with token:", token);
+    */
+
+     $("#logoutButton").click(function(){
+        var logoutUser = {
+        token: localStorage.getItem("fgatoken"),
+    };
+    console.log("sending post on Logout to bff with user:" + logoutUser)
+
+    $.ajax({
+        url: 'http://localhost:8090/api/users/logout',
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({ token: token }),
+        success: function(data){
+            console.log("Logout successful:", data);
+            alert("Logout successful!" + data);
+            //localStorage.removeItem("fgatoken");
+            localStorage.setItem("fgatoken", data.token);
+            window.location.href = "Login.html";
+        },
+        error: function(xhr){
+            console.log("Logout error:", xhr.status, xhr.responseText);
+            // Fallback: falls trotzdem ausgeloggt wurde
+            if (xhr.status === 200 || xhr.status === 204) {
+                alert("Logout successful (fallback)!");
+                //localStorage.removeItem("fgatoken");
+                window.location.href = "Login.html";
+            } else {
+                alert("Could not log you off: " + xhr.status);
+            }
+        }
+    });
+});
+-->
+</script>
+*/
 </body>
 </html>

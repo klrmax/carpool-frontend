@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Dokumentbeschreibung (SEO) -->
-  <meta name="description" content="Login FGA Web-Programming app" />
+  <meta name="description" content="Login Carpool app" />
 
   <!-- Titel der Seite (im Tab, SEO) -->
   <title>Login | carpool</title>
@@ -17,52 +17,82 @@
   <link rel="icon" href="/favicon.ico" />
   
   <!-- CSS Datei einbinden -->
-  <link rel="stylesheet" href="./css/Fahrgemeinschaft.css" />
+  <link rel="stylesheet" href="./css/Login-Register.css" />
      <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 
-<h1>Carpool Login</h1>
+   <div class="container">
+        <h1>Login</h1>
+        
+        <form class="form">
+            <div class="form-group">
+                <label>Mobile</label>
+                <input type="number" id="userNumber" placeholder="+49 ">
+            </div>
+            
+            <div class="form-group">
+    <label>Password</label>
+    <div class="password-input">
+        <input type="password" id="userPassword" placeholder="Password">
+        <button type="button" class="password-toggle">👁️</button>
+    </div>
+</div>
 
-<p>
-    Welcome to the carpool app<br><br>
+            <button type="v" id="loginButton" class="submit-button">Login</button>
+        </form>
 
-    <p>
-        Please provide the following information<br>    
-        Number: <input type="number" id="userNumber"> <br>
-        Password: <input type="password" id="userPassword"><br>
+        <p class="bottom-text">Don't have an account? <a href="Register.html">Sign up</a></p>
+    </div>
+    
+<script>
+    document.querySelector('.password-toggle').addEventListener('click', function() {
+        const passwordInput = document.querySelector('#userPassword');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
+    });
+</script>
 
-        <button id="loginButton">Log me on !</button>
-
-    </p>
+       <footer class="footer">
+        <p>Carpool @ 2025. All rights reserved.</p>
+    </footer>
 
 <script>
-    $("#loginButton").click(function(){
-        var loginUser = {
-        Number: $("#userNumber").val(),
-        password: $("#userPassword").val(),
-    };
+$(".form").submit(function(event){
+    event.preventDefault();
 
+    console.log("Sending POST /api/users/login")
     console.log("sending post on Login to bff with user:")
     console.log(loginUser)
 
     $.ajax({
-    url : 'https://carpoolbff-c576f25b03e8.herokuapp.com/login',
+    url : 'http://localhost:8090/api/users/login',
     type: 'POST',
     dataType: 'json',
     contentType: 'application/json',
-    success: function(data){
-        console.log("login successful: " + data);
-        alert("Login successful: " + data);
-        localStorage.setItem("fgatoken", data.token);
+     data : JSON.stringify({
+        mobileNumber: $("#userNumber").val(),
+        password: $("#userPassword").val()
+    }),
+    success: function(response){
+        console.log("Login successful:", response);
+        alert("Login successful: " + response);
+        localStorage.setItem("fgatoken", response.token);
+        localStorage.setItem("userId", response.userId);
+        localStorage.setItem("userName", response.name);
+
+        console.log("Saved token:", response.token);
+        alert("Welcome back " + response.name + "!");
+        window.location.href = "Homepage.html";
+        
     },
-    data : JSON.stringify(loginUser),
     processData: false,
     error: function(xhr, ajaxOptions, thrownError){
         console.log("error on login:" + xhr.status + " " + thrownError);
         alert("Login failed: " + xhr.status + " " + thrownError);
-        localStorage.setItem("fgatoken", '123');
+        //localStorage.setItem("fgatoken");
     }});
 
     });
@@ -70,9 +100,7 @@
 </script>
 
     
-    <br/>
-    <div class="ridemenu">
-<a href="Homepage.html">Homepage</a> &nbsp;
+
     </div>
 </body>
 </html>
