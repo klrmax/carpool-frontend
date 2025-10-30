@@ -37,6 +37,10 @@
     Available Seats: <input type="number" id="rideSeats"><br>  
 </p>
 
+
+<br>
+<br>
+<button id="addRideButton">Add Ride</button>
 <span id="ridesTable">
     <table>
         <thead>
@@ -66,20 +70,17 @@
         </tbody>
     </table>
 </span>
-<br>
-<br>
-<button id="addRideButton">Add Ride</button>
-
+ <!-- Placeholder for Map
 <span id="rideMap">
     <h3>Map Placeholder</h3>
     <p>This section can be used to display a map of the rides.</p>
 </span>  
-    
+     -->
     <br/>
 <script>
     $("#addRideButton").click(function(){
         var  addRide = {
-            roken : localStorage.getItem("fgatoken"),
+            token : localStorage.getItem("jwToken"),
             Ride: { 
                 start: $("#rideStart").val(),
                 destination: $("#rideDestination").val(),
@@ -99,7 +100,7 @@
     contentType: 'application/json',
     success: function(data){
         console.log("Ride has been added: " + data);
-        alert("ride has been added: " + data);
+        alert("Ride has been added: " + data);
 
     },
     data : JSON.stringify(registerUser),

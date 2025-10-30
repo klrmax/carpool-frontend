@@ -4,16 +4,16 @@ FGA-FKT-1
 Der Service besitzt eine Registrierungsseite
 
 FGA-FKT-2
-Ein Benutzer registriert sich auf der Registrierungs-Seite mit Email und Passwort.
+Ein Benutzer registriert sich auf der Registrierungs-Seite mit Name, Telefonnummer und Passwort.
 
-FGA-FKT-3
+// FGA-FKT-3
 Das System schickt dem Nutzer eine Email zur Verifizierung der Email Adresse
 
 FGA-FKT-4
 Der Service besitzt eine Login-Seite.
 
 FGA-FKT-5
-Ein Benutzer loggt sich auf der Login-Seite mit Email und Passwort ein.
+Ein Benutzer loggt sich auf der Login-Seite mit nummer und Passwort ein.
 
 FGA-FKT-6
 Der Service validiert die Eingabedaten eines Nutzers auf der Login-Seite.
@@ -21,17 +21,17 @@ Der Service validiert die Eingabedaten eines Nutzers auf der Login-Seite.
 FGA-FKT-7
 Der Service gibt dem Benutzer einen individuellen Token, der temporär gültig ist.
 
-FGA-FKT-8
+//FGA-FKT-8
 Der Service hat eine Homepage
 
-FGA-FKT-9
+//FGA-FKT-9
 Der Service erlaubt nutzern über die Homepage auf Unterseiten zu navigieren
 
 FGA-FKT-10
-Der Service hat eine Fahrten-Eingabeseite
+Der Service hat eine Dashboard Seite
 
 FGA-FKT-11
-Benutzer geben auf der Fahren-Eingabeseite Fahrten (Fahrt_ID, Start- & Zielort, Startzeit, Datum, Sitzplätze) ein.
+Benutzer geben auf dem Dashboard Fahrten (Start- & Zielort, Startzeit, Datum, Sitzplätze) ein.
 
 FGA-FKT-12
 Der Service stellt den Ersteller einer neuen Fahrt als Fahrer (Fahrer_ID, Name, Email, Telefonnummer) dieser Fahrt ein.
@@ -64,13 +64,10 @@ FGA-FKT-21
 Benutzer können Fahrten auswählen um mehr Informationen zu bekommen.
 
 FGA-FKT-22
-Die Fahrten werden in einem eigenen Popup Fenster angezeigt (Strecke, Fahrt, Kartenansicht).
-
-FGA-FKT-23
-Das System zieht sich aus einem Kartenprogramm die Kartenansicht der Strecke und zeigt sie in dem Popup Fenster an.
+Die Fahrten werden in einer neuen Seite angezeigt
 
 FGA-FKT-24
-Benutzer können bei vorhandenen Fahrten anfragen ob sie mitfahren dürfen.
+Benutzer können auf der Fahrten Seite anfragen ob sie mitfahren dürfen
 
 FGA-FKT-25
 Das System speichert die Mitfahrer Anfrage
@@ -79,10 +76,10 @@ FGA-FKT-26
 Das System schickt eine Mitfahranfrage (Anfrage_ID, Fahrt_ID, Mitfahrer_ID) Benachrichtigung an den Fahrer
 
 FGA-FKT-27
-Der Fahrer hat die Möglichkeit die Mitfahranfrage über einen Button anzunehmen oder abzulehnen.
+Der Fahrer hat die Möglichkeit die Mitfahranfrage über die meine Fahrtenseite anzunehmen oder abzulehnen.
 
 FGA-FKT-28
-Eingeloggte Benutzer sehen auf der Homepage eine Übersicht über relevante Informationen.
+Eingeloggte Benutzer sehen auf dem Dashboard eine Übersicht über ihre erstellten Fahrten, Mitfahranfragen und koennen neu Farhten anlegen 
 
 FGA-FKT-29
 Das System besitzt eine Logout Seite
