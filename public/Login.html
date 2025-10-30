@@ -64,8 +64,7 @@ $(".form").submit(function(event){
     event.preventDefault();
 
     console.log("Sending POST /api/users/login")
-    console.log(loginUser)
-
+    
     $.ajax({
     url : 'https://carpoolbff-c576f25b03e8.herokuapp.com/api/users/login',
     type: 'POST',
