@@ -57,7 +57,7 @@
 <!--
 <script>
     /* $("#logoutButton").click(function(){
-      const token = localStorage.getItem("fgatoken");
+      const token = localStorage.getItem("jwToken");
 
         if (!token || token === 'OFF') {
             alert("You are not logged in.");
@@ -68,7 +68,7 @@
 
      $("#logoutButton").click(function(){
         var logoutUser = {
-        token: localStorage.getItem("fgatoken"),
+        token: localStorage.getItem("jwToken"),
     };
     console.log("sending post on Logout to bff with user:" + logoutUser)
 
@@ -81,8 +81,8 @@
         success: function(data){
             console.log("Logout successful:", data);
             alert("Logout successful!" + data);
-            //localStorage.removeItem("fgatoken");
-            localStorage.setItem("fgatoken", data.token);
+            //localStorage.removeItem("jwToken");
+            localStorage.setItem("jwToken", data.token);
             window.location.href = "Login.html";
         },
         error: function(xhr){
@@ -90,7 +90,7 @@
             // Fallback: falls trotzdem ausgeloggt wurde
             if (xhr.status === 200 || xhr.status === 204) {
                 alert("Logout successful (fallback)!");
-                //localStorage.removeItem("fgatoken");
+                //localStorage.removeItem("jwToken");
                 window.location.href = "Login.html";
             } else {
                 alert("Could not log you off: " + xhr.status);

@@ -80,7 +80,7 @@
 <script>
     $("#addRideButton").click(function(){
         var  addRide = {
-            token : localStorage.getItem("fgatoken"),
+            token : localStorage.getItem("jwToken"),
             Ride: { 
                 start: $("#rideStart").val(),
                 destination: $("#rideDestination").val(),
