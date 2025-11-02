@@ -7,7 +7,7 @@ FGA-FKT-2
 Ein Benutzer registriert sich auf der Registrierungs-Seite mit Name, Telefonnummer und Passwort.
 
 // FGA-FKT-3
-Das System schickt dem Nutzer eine Email zur Verifizierung der Email Adresse
+Das System zeigt dem Nutzer eine Bestätigung der Registrierung
 
 FGA-FKT-4
 Der Service besitzt eine Login-Seite.
@@ -82,7 +82,7 @@ FGA-FKT-28
 Eingeloggte Benutzer sehen auf dem Dashboard eine Übersicht über ihre erstellten Fahrten, Mitfahranfragen und koennen neu Farhten anlegen 
 
 FGA-FKT-29
-Das System besitzt eine Logout Seite
+Das System besitzt einen Logout Button
 
 FGA-FKT-30
 Der Benutzer kann sich durch klick auf einen Logout button abmelden vom Service.
