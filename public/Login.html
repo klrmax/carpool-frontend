@@ -85,7 +85,7 @@ $(".form").submit(function(event){
         const token = response.token;
         const userid = response.userId;
         const username = response.name;
-        window.location.href = `https://carpool-mpa-b2ab41ee1e9d.herokuapp.com/dashboard?token=${encodeURIComponent(token)}&userid=${userid}&username=${encodeURIComponent(username)}`;
+        window.location.href = `https://carpool-spa-dc2811d7ff92.herokuapp.com/rides?token=${encodeURIComponent(token)}&userid=${userid}&username=${encodeURIComponent(username)}`;
         
     },
     processData: false,
