@@ -6,17 +6,53 @@
 class AlertManager {
     constructor() {
         this.container = null;
+        // Container später initialisieren, wenn DOM bereit ist
         this.initContainer();
     }
 
     initContainer() {
-        // Erstelle den Alert-Container, falls nicht vorhanden
-        if (!document.querySelector('.alert-container')) {
-            this.container = document.createElement('div');
-            this.container.className = 'alert-container';
-            document.body.appendChild(this.container);
+        // Warte bis body vorhanden ist
+        const initWithDelay = () => {
+            if (!document.body) {
+                setTimeout(initWithDelay, 100);
+                return;
+            }
+
+            // Erstelle den Alert-Container, falls nicht vorhanden
+            if (!document.querySelector('.alert-container')) {
+                this.container = document.createElement('div');
+                this.container.className = 'alert-container';
+                document.body.appendChild(this.container);
+            } else {
+                this.container = document.querySelector('.alert-container');
+            }
+        };
+
+        // Wenn DOM bereits ready, direkt initialisieren
+        if (document.body) {
+            initWithDelay();
         } else {
-            this.container = document.querySelector('.alert-container');
+            // Sonst warten
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initWithDelay);
+            } else {
+                initWithDelay();
+            }
+        }
+    }
+
+    /**
+     * Stelle sicher dass Container vorhanden ist
+     */
+    ensureContainer() {
+        if (!this.container) {
+            if (!document.querySelector('.alert-container')) {
+                this.container = document.createElement('div');
+                this.container.className = 'alert-container';
+                document.body.appendChild(this.container);
+            } else {
+                this.container = document.querySelector('.alert-container');
+            }
         }
     }
 
@@ -28,6 +64,8 @@ class AlertManager {
      * @param {number} duration - Wie lange der Alert angezeigt wird (ms), 0 = unbegrenzt
      */
     show(type = 'info', title = '', message = '', duration = 5000) {
+        this.ensureContainer();
+
         const alertId = 'alert-' + Date.now();
         
         const alert = document.createElement('div');
@@ -101,5 +139,13 @@ class AlertManager {
     }
 }
 
-// Globale Instanz erstellen
-const alerts = new AlertManager();
+// Globale Instanz erstellen - warte bis DOM bereit ist
+let alerts;
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        alerts = new AlertManager();
+    });
+} else {
+    alerts = new AlertManager();
+}
