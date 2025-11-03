@@ -81,12 +81,19 @@
     }),
     success: function(data){
         console.log("Register successful: " + data);
-        alerts.success('✓ Registrierung erfolgreich!', 'Sie werden zum Login weitergeleitet...');
         
-        // Verzögerte Weiterleitung damit Alert sichtbar ist
-        setTimeout(() => {
-            window.location.href = "Login.html";
-        }, 2000);
+        // Warte bis alerts verfügbar ist
+        const showSuccessAlert = () => {
+            if (typeof alerts !== 'undefined') {
+                alerts.success('✓ Registrierung erfolgreich!', 'Sie werden zum Login weitergeleitet...');
+                setTimeout(() => {
+                    window.location.href = "Login.html";
+                }, 2000);
+            } else {
+                setTimeout(showSuccessAlert, 100);
+            }
+        };
+        showSuccessAlert();
 
     },
     processData: false,
@@ -103,6 +110,8 @@
             errorMessage = 'Diese Mobilnummer existiert bereits.';
         } else if (xhr.status === 429) {
             errorMessage = 'Zu viele Registrierungsversuche. Bitte später versuchen.';
+        } else if (xhr.status === 500) {
+            errorMessage = 'Diese Mobilnummer ist bereits vergeben.';
         } else if (xhr.status === 0) {
             errorTitle = 'Verbindungsfehler';
             errorMessage = 'Server ist nicht erreichbar.';
@@ -110,7 +119,15 @@
             errorMessage = 'Ein Fehler ist aufgetreten: ' + xhr.status;
         }
         
-        alerts.error(errorTitle, errorMessage);
+        // Warte bis alerts verfügbar ist
+        const showErrorAlert = () => {
+            if (typeof alerts !== 'undefined') {
+                alerts.error(errorTitle, errorMessage, 6000);
+            } else {
+                setTimeout(showErrorAlert, 100);
+            }
+        };
+        showErrorAlert();
     }});
 
     });
