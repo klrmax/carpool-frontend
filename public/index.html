@@ -19,66 +19,101 @@
   <!-- CSS Datei einbinden -->
   <link rel="stylesheet" href="./css/Carpool.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    /* Navbar Styles */
+    .navbar {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .navbar-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .navbar-brand {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .navbar-menu {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .navbar-link {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+    
+    .navbar-link:hover {
+        background: rgba(255,255,255,0.2);
+        transform: translateY(-2px);
+    }
+    
+    .main-content {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 2rem;
+        text-align: center;
+    }
+    
+    .main-content h1 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+    
+    .main-content p {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 2rem;
+    }
+  </style>
 </head>
 
 <body>
-   <div class="logout-container">
-        <button id="logoutButton">Logout</button>
-    </div>
-        <div class="sidebar">
-        <div class="sidebar-content">
-            <div class="nav-section">
-                <a href="https://carpool-spa-dc2811d7ff92.herokuapp.com/rides" class="nav-link ride">Ride</a>
-            </div>
-            <div class="auth-section">
-                <a href="Login.html" class="auth-link login">Login</a>
-                <a href="Register.html" class="auth-link signup">Sign Up</a>
-            </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">
+                🚗 Carpool
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="https://carpool-spa-dc2811d7ff92.herokuapp.com/rides" class="navbar-link">Rides</a></li>
+                <li><a href="Login.html" class="navbar-link">Login</a></li>
+                <li><a href="Register.html" class="navbar-link">Sign Up</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
   <div class="main-content">
-        <h1>Carpool Homepage</h1>
-        <p>Welcome to the FGA.</p>
+        <h1>Welcome to Carpool</h1>
+        <p>Your modern solution for sustainable transportation and community building.</p>
     </div>
-
-
- <div class="taskmenu">
-        <a href="https://carpool-spa-dc2811d7ff92.herokuapp.com/rides">Ride</a>
-    </div>
-
 
     <footer class="footer">
         <p>&copy; 2025 Carpool. All rights reserved.</p>
     </footer>
 
-<!--<a href="tasks/GetTask.html">Show all tasks</a> &nbsp;
--->
-<!-- Script temporarily disabled
-<script>
-// Logout functionality (disabled)
-// $("#logoutButton").click(function(){
-//   const token = localStorage.getItem("jwToken");
-//   if (!token || token === 'OFF') {
-//     alert("You are not logged in.");
-//     return;
-//   }
-//   $.ajax({
-//     url: 'http://localhost:8090/api/users/logout',
-//     type: 'POST',
-//     dataType: 'json',
-//     contentType: 'application/json',
-//     data: JSON.stringify({ token }),
-//     success: function(data){
-//       localStorage.setItem("jwToken", data.token);
-//       window.location.href = "Login.html";
-//     },
-//     error: function(){
-//       window.location.href = "Login.html";
-//     }
-//   });
-// });
-</script>
--->
 </body>
 </html>
