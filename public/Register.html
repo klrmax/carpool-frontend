@@ -18,7 +18,9 @@
   
   <!-- CSS Datei einbinden -->
   <link rel="stylesheet" href="css/Login-Register.css" />
-   <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="css/Alerts.css" />
+  <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="js/alerts.js"></script>
 </head>
 
 <body>
@@ -79,14 +81,36 @@
     }),
     success: function(data){
         console.log("Register successful: " + data);
-        alert("Register successful: " + data);
-        window.location.href = "Login.html";
+        alerts.success('✓ Registrierung erfolgreich!', 'Sie werden zum Login weitergeleitet...');
+        
+        // Verzögerte Weiterleitung damit Alert sichtbar ist
+        setTimeout(() => {
+            window.location.href = "Login.html";
+        }, 2000);
 
     },
     processData: false,
     error: function(xhr, ajaxOptions, thrownError){
         console.log("error on register:" + xhr.status + " " + thrownError);
-        alert("registration failed: " + xhr.status + " " + thrownError);
+        
+        // Besseres Error-Handling
+        let errorTitle = 'Registrierung fehlgeschlagen';
+        let errorMessage = '';
+        
+        if (xhr.status === 400) {
+            errorMessage = 'Eingabefelder ungültig oder unvollständig.';
+        } else if (xhr.status === 409) {
+            errorMessage = 'Diese Mobilnummer existiert bereits.';
+        } else if (xhr.status === 429) {
+            errorMessage = 'Zu viele Registrierungsversuche. Bitte später versuchen.';
+        } else if (xhr.status === 0) {
+            errorTitle = 'Verbindungsfehler';
+            errorMessage = 'Server ist nicht erreichbar.';
+        } else {
+            errorMessage = 'Ein Fehler ist aufgetreten: ' + xhr.status;
+        }
+        
+        alerts.error(errorTitle, errorMessage);
     }});
 
     });

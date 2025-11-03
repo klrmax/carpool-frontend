@@ -18,7 +18,9 @@
   
   <!-- CSS Datei einbinden -->
   <link rel="stylesheet" href="css/Login-Register.css" />
-     <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="css/Alerts.css" />
+  <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="js/alerts.js"></script>
 </head>
 
 <body>
@@ -76,23 +78,41 @@ $(".form").submit(function(event){
     }),
     success: function(response){
         console.log("Login successful:", response);
-        alert("Login successful: " + response);
+        alerts.success('✓ Willkommen zurück!', response.name);
 
         console.log("Saved token:", response.token);
-        alert("Welcome back " + response.name + "!");
 
         // Token als Url-Parameter anhängen und weiterleiten
         const token = response.token;
         const userid = response.userId;
         const username = response.name;
-        window.location.href = `https://carpool-spa-dc2811d7ff92.herokuapp.com/dashboard?token=${encodeURIComponent(token)}&userid=${userid}&username=${encodeURIComponent(username)}`;
+        
+        // Verzögerte Weiterleitung damit Alert sichtbar ist
+        setTimeout(() => {
+            window.location.href = `https://carpool-spa-dc2811d7ff92.herokuapp.com/dashboard?token=${encodeURIComponent(token)}&userid=${userid}&username=${encodeURIComponent(username)}`;
+        }, 1500);
         
     },
     processData: false,
     error: function(xhr, ajaxOptions, thrownError){
         console.log("error on login:" + xhr.status + " " + thrownError);
-        alert("Login failed: " + xhr.status + " " + thrownError);
-        //localStorage.setItem("jwToken");
+        
+        // Besseres Error-Handling
+        let errorTitle = 'Login fehlgeschlagen';
+        let errorMessage = '';
+        
+        if (xhr.status === 401) {
+            errorMessage = 'Ungültige Mobilnummer oder Passwort.';
+        } else if (xhr.status === 429) {
+            errorMessage = 'Zu viele Login-Versuche. Bitte später versuchen.';
+        } else if (xhr.status === 0) {
+            errorTitle = 'Verbindungsfehler';
+            errorMessage = 'Server ist nicht erreichbar.';
+        } else {
+            errorMessage = 'Ein Fehler ist aufgetreten: ' + xhr.status;
+        }
+        
+        alerts.error(errorTitle, errorMessage);
     }});
 
     });
