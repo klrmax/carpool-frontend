@@ -1,0 +1,268 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f5f3ff 100%);
+    min-height: 100vh;
+    display: flex;
+}
+
+/* ==================== SIDEBAR (wie im Mockup) ==================== */
+.sidebar {
+    width: 280px;
+    background: white;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
+.sidebar-header {
+    margin-bottom: 3rem;
+}
+
+.sidebar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #667eea;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Navigation Items */
+.sidebar-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.nav-item:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateX(5px);
+}
+
+.nav-icon {
+    font-size: 1.5rem;
+}
+
+.nav-text {
+    font-size: 1rem;
+}
+
+/* Sidebar Footer - Buttons */
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto;
+}
+
+.btn {
+    padding: 0.9rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-outline:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* ==================== MAIN CONTENT ==================== */
+.main-container {
+    margin-left: 280px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.top-bar {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-logout {
+    padding: 0.7rem 1.5rem;
+    background: #6b7280;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    background: #4b5563;
+    transform: translateY(-2px);
+}
+
+.content {
+    flex: 1;
+    padding: 2rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.main-subtitle {
+    font-size: 1.5rem;
+    color: #6b7280;
+    margin-bottom: 4rem;
+}
+
+/* Info Cards */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+}
+
+.info-card p {
+    color: #6b7280;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+    background: #f9fafb;
+    color: #6b7280;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 1.5rem;
+    }
+    
+    .main-container {
+        margin-left: 0;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .main-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .content {
+        padding: 1.5rem;
+    }
+    
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .sidebar-brand {
+        font-size: 1.5rem;
+    }
+    
+    .nav-item {
+        padding: 0.8rem 1rem;
+    }
+}

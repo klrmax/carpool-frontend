@@ -1,0 +1,230 @@
+/* Reset und Basis-Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================== NAVBAR STYLES ==================== */
+.navbar {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.navbar-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border: 2px solid transparent;
+}
+
+.navbar-link:hover {
+    background: white;
+    color: #667eea;
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    animation: fadeInUp 0.8s ease;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    animation: fadeInUp 1s ease;
+}
+
+/* ==================== BUTTONS ==================== */
+.button-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1.2s ease;
+}
+
+.cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #667eea;
+    background: white;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    background: #f8f9fa;
+}
+
+/* ==================== LOGO SECTION ==================== */
+.logo-section {
+    text-align: center;
+    padding: 2rem;
+    animation: fadeIn 1.5s ease;
+}
+
+.logo-section img {
+    max-width: 200px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background: rgba(0,0,0,0.2);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+/* 
+RESPONSIVE ERKLÄRUNG:
+- Mobile-First Approach: Basis-Styles funktionieren auf allen Bildschirmen
+- Media Queries (@media) passen das Design für kleinere Bildschirme an
+- max-width: 768px = Tablets und Smartphones
+- Flexbox mit flex-wrap ermöglicht automatisches Umbrechen
+- Font-Größen werden auf mobilen Geräten reduziert
+- Navbar-Items bekommen weniger Abstand auf kleinen Bildschirmen
+- Buttons stapeln sich vertikal statt horizontal
+*/
+
+@media (max-width: 768px) {
+    /* Kleinere Überschriften auf Mobile */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    
+    /* Navbar kompakter auf Mobile */
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    
+    .navbar-menu {
+        gap: 0.5rem;
+    }
+    
+    .navbar-link {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Buttons vertikal stapeln auf Mobile */
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Extra kleine Bildschirme (Smartphones im Portrait-Modus) */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .navbar-menu {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}

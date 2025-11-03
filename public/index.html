@@ -17,103 +17,67 @@
   <link rel="icon" href="/favicon.ico" />
 
   <!-- CSS Datei einbinden -->
-  <link rel="stylesheet" href="./css/Carpool.css" />
+  <link rel="stylesheet" href="/css/Index.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <style>
-    /* Navbar Styles */
-    .navbar {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 1rem 2rem;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-    
-    .navbar-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .navbar-brand {
-        color: white;
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    
-    .navbar-menu {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-    
-    .navbar-link {
-        color: white;
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-        font-weight: 500;
-    }
-    
-    .navbar-link:hover {
-        background: rgba(255,255,255,0.2);
-        transform: translateY(-2px);
-    }
-    
-    .main-content {
-        max-width: 1200px;
-        margin: 3rem auto;
-        padding: 2rem;
-        text-align: center;
-    }
-    
-    .main-content h1 {
-        font-size: 2.5rem;
-        color: #333;
-        margin-bottom: 1rem;
-    }
-    
-    .main-content p {
-        font-size: 1.2rem;
-        color: #666;
-        margin-bottom: 2rem;
-    }
-  </style>
 </head>
 
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="/" class="navbar-brand">
-                🚗 Carpool
-            </a>
-            <ul class="navbar-menu">
-                <li><a href="https://carpool-spa-dc2811d7ff92.herokuapp.com/rides" class="navbar-link">Rides</a></li>
-                <li><a href="Login.html" class="navbar-link">Login</a></li>
-                <li><a href="Register.html" class="navbar-link">Sign Up</a></li>
-            </ul>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-brand">🚗 Carpool</h2>
         </div>
-    </nav>
+        
+        <nav class="sidebar-nav">
+            <a href="https://carpool-spa-dc2811d7ff92.herokuapp.com/rides" class="nav-item">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Rides</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="Login.html" class="btn btn-outline">Log In</a>
+            <a href="Register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+    </aside>
 
-  <div class="main-content">
-        <h1>Welcome to Carpool</h1>
-        <p>Your modern solution for sustainable transportation and community building.</p>
-    </div>
-
-    <footer class="footer">
-        <p>&copy; 2025 Carpool. All rights reserved.</p>
-    </footer>
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Logout Button (optional) -->
+        <div class="top-bar">
+            <button class="btn-logout" style="display: none;">Logout</button>
+        </div>
+        
+        <div class="content">
+            <h1 class="main-title">Carpool</h1>
+            <p class="main-subtitle">Decentral ride matching</p>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="card-icon">🌍</div>
+                    <h3>Sustainable</h3>
+                    <p>Reduce your carbon footprint by sharing rides</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-icon">💰</div>
+                    <h3>Save Money</h3>
+                    <p>Split fuel costs and travel expenses</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Build Community</h3>
+                    <p>Meet new people on your daily commute</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Carpool @ 2025. All rights reserved.</p>
+        </footer>
+    </main>
 
 </body>
 </html>
